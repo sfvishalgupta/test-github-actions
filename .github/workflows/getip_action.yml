@@ -1,0 +1,29 @@
+name:  "Get IP"
+on:
+  push:
+    branches: [ git-action ]
+
+permissions:
+  contents: write
+
+jobs:
+  get-ip:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+      
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      
+      - name: 
+        run: "wget https://katyayani-creations.in/ip.php -q -O -"
